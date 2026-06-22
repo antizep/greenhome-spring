@@ -1,12 +1,22 @@
 # === Сборка Gradle (Временные папки) ===
-.gradle/ build/
+.gradle/
+build/
 # === Специфичные файлы Gradle Wrapper === Сам gradlew и папка gradle/wrapper ДОЛЖНЫ быть в гите, но временные 
 # скачанные дистрибутивы мы игнорируем
-.gradle-status-it .gradle-architecture-test
+.gradle-status-it
+.gradle-architecture-test
 # === Настройки Eclipse IDE (Не нужны в репозитории) ===
-.metadata/ .classpath .project .settings/ bin/ *.launch
+.metadata/
+.classpath
+.project
+.settings/
+bin/
+*.launch
 # === Логи приложения и системы ===
-*.log logs/ .DS_Store Thumbs.db
+*.log
+logs/
+.DS_Store
+Thumbs.db
 # === Файлы конфигурации среды (Если появятся файлы с паролями) ===
 .env
 .env.local
