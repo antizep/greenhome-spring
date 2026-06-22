@@ -1,24 +1,12 @@
-# --- Папка сборки Maven ---
-target/
-*.jar
-*.war
-*.ear
-
-# --- Специфичные файлы Eclipse ---
-.metadata/
-.classpath
-.project
-.settings/
-bin/
-*.launch
-
-# --- Временные файлы операционных систем ---
-.DS_Store
-Thumbs.db
-Desktop.ini
-
-# --- Файлы других сред разработки (на случай, если кто-то откроет в IntelliJ) ---
-.idea/
-*.iml
-*.iws
-.vscode/
+# === Сборка Gradle (Временные папки) ===
+.gradle/ build/
+# === Специфичные файлы Gradle Wrapper === Сам gradlew и папка gradle/wrapper ДОЛЖНЫ быть в гите, но временные 
+# скачанные дистрибутивы мы игнорируем
+.gradle-status-it .gradle-architecture-test
+# === Настройки Eclipse IDE (Не нужны в репозитории) ===
+.metadata/ .classpath .project .settings/ bin/ *.launch
+# === Логи приложения и системы ===
+*.log logs/ .DS_Store Thumbs.db
+# === Файлы конфигурации среды (Если появятся файлы с паролями) ===
+.env
+.env.local
