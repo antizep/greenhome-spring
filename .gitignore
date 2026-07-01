@@ -1,6 +1,6 @@
 # === Сборка Gradle (Временные папки) ===
 .gradle/
-build/
+lib/build/
 # === Специфичные файлы Gradle Wrapper === Сам gradlew и папка gradle/wrapper ДОЛЖНЫ быть в гите, но временные 
 # скачанные дистрибутивы мы игнорируем
 .gradle-status-it
