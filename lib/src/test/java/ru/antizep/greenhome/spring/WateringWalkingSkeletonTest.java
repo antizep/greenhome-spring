@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.io.ObjectInputFilter.Status;
 
@@ -27,25 +27,25 @@ public class WateringWalkingSkeletonTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
+	
 	@Autowired
 	private ObjectMapper objectMapper;
-
+	
 	@MockitoBean
 	private SerialGateway serialGateway;
-
+	
 	@Test
-	void shouldTriggerWateringThroughEntireSystem(CapturedOutput output) {
+	void shouldTriggerWateringThroughEntireSystem(CapturedOutput out) {
 		WateringRequest request = new WateringRequest("ZONE_1", 15);
-
-		mockMvc.perform(
+		
+		mockMvc.perform( 
 				post("/api/v1/watering")
-					.contentType(MediaType.APPLICATION_JSON)
-					.content(objectMapper.writeValueAsString(request))
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(request))
 				)
 		.andExpect(status().isOk());
-		verify(serialGateway).sendComand("START_WATER:ZONE_1:15");
-		assertThat(output.getOut()).contains("Инициализирован полив зоны: ZONE_1 на 15 минут.");
+		
+		verify(serialGateway).sendComand("START_WATERING:ZONE_1:15");
+		assertThat(out.getOut()).contains("Инициализирован полив зоны: ZONE_1 на 15 минут.");
 	}
-
 }
