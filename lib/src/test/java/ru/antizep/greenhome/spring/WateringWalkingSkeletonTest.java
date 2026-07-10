@@ -18,7 +18,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.io.ObjectInputFilter.Status;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ru.antizep.greenhome.spring.dto.WateringRequest;
+import ru.antizep.greenhome.spring.infrastructure.SerialGateway;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -35,7 +39,7 @@ public class WateringWalkingSkeletonTest {
 	private SerialGateway serialGateway;
 	
 	@Test
-	void shouldTriggerWateringThroughEntireSystem(CapturedOutput out) {
+	void shouldTriggerWateringThroughEntireSystem(CapturedOutput out) throws JsonProcessingException, Exception {
 		WateringRequest request = new WateringRequest("ZONE_1", 15);
 		
 		mockMvc.perform( 
